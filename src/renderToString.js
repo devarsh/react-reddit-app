@@ -1,8 +1,8 @@
-var React = require('react');
-import {renderToString} from 'react-dom/server';
+var React = require('react')
+import {renderToString} from 'react-dom/server'
 
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
 import {Reducers} from './reducer/index.js'
 
 import {Provider} from 'react-redux'

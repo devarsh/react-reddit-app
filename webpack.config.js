@@ -11,7 +11,8 @@ module.exports = {
       		components: `${ srcPath }/components/`,
      		consts :    `${ srcPath }/consts/`,
       		reducer: 	`${ srcPath }/reducer/`,
-      	}
+      	},
+      	modulesDirectories: ["src", "node_modules"]
     },
     module: {
 	    preLoaders: [
@@ -53,7 +54,11 @@ module.exports = {
 			{
 				test: /\.(js|jsx)$/,
 				loader: 'babel-loader',
-				include: [].concat([path.join(__dirname)])
+				query: {
+      				"presets": ["es2015", "react"]
+    			},
+    			include: path.join(__dirname, './src'),
+    			exclude: path.join(__dirname, './node_modules')
 			}
 	    ]
 	},
@@ -63,12 +68,12 @@ module.exports = {
       		'process.env': {
         		'NODE_ENV': JSON.stringify('development')
       		}
-    	}),
-    	new webpack.optimize.UglifyJsPlugin({
+    	})
+    	/*new webpack.optimize.UglifyJsPlugin({
       		compressor: {
         		warnings: false
       		}
-    	})
+    	})*/
   	],
 	cache: true,
 	target: 'web',

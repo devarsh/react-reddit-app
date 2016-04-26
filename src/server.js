@@ -1,10 +1,13 @@
 import path from 'path'
-import Express from 'express'
-import handleRender from 'renderToString.js'
+import {handleRender} from 'renderToString.js'
 
-const app = Express()
+var express = require('express')
+
+
+const app = express()
 const port = 3000
-app.use('/static',express.static(__dirname + '/static'))
-app.use(handleRender)
 
-app.listen(port)
+app.use('/static',express.static('../static'))
+app.get('/',handleRender)
+
+app.listen(port,()=> {console.log('Started Listening on port 3000')})
